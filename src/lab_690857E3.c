@@ -1,12 +1,34 @@
+#include <stdio.h>
+#include "lab_690857E3.h"
 
 void copy(char *psource, char *ptarget, unsigned num_char)
 {
-    // TODO: write your code here
+    while (num_char > 0 && *psource != '\0')
+    {
+        *ptarget = *psource;
+        ptarget++;
+        psource++;
+        num_char--;
+    }
+
+    *ptarget = '\0';
 }
 
-void concatenate(char *psrc1, char *psrc2, char *ptarget, unsigned buffer_size)
+void concatenate(char *psrc1, char *psrc2,
+                 char *ptarget, unsigned buffer_size)
 {
-    // TODO: write your code here
+    if (buffer_size == 0)
+        return;
+
+    copy(psrc1, ptarget, buffer_size - 1);
+
+    while (*ptarget != '\0')
+    {
+        ptarget++;
+        buffer_size--;
+    }
+
+    copy(psrc2, ptarget, buffer_size - 1);
 }
 
 // DO NOT change the code below
